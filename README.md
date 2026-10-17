@@ -19,10 +19,12 @@
 
 ```
 d:\CaNhan\csdltt\
-├── docs/                                      # Tài liệu học thuật và bản thảo bài báo
+├── docs/                                      # Tài liệu học thuật, báo cáo và bản thuyết trình
+│   ├── BAO_CAO_CSDL_NANG_CAO.docx             # Báo cáo chuyên sâu môn học định dạng Microsoft Word (.docx, 8 chương)
+│   ├── SLIDE_THUYET_TRINH_CSDL_NANG_CAO.pptx  # Bộ slide thuyết trình bảo vệ đề tài PowerPoint (.pptx, 20 slide chuẩn 16:9)
 │   ├── BAI_BAO_KHOA_HOC_HOAN_CHINH.md         # Bản thảo toàn văn Bài báo khoa học chuẩn IMRAD (IEEE format)
 │   ├── PAPER_MANUSCRIPT_IEEE.tex              # Mã nguồn LaTeX IEEE Transactions hoàn chỉnh sẵn sàng biên dịch
-│   ├── BAO_CAO_MON_HOC_CSDL_NANG_CAO.md       # Báo cáo tổng kết chuyên sâu môn học CSDL Nâng cao (8 chương)
+│   ├── BAO_CAO_MON_HOC_CSDL_NANG_CAO.md       # Báo cáo tổng kết chuyên sâu môn học CSDL Nâng cao (Markdown)
 │   └── DE_CUONG_NGHIEN_CUU_THAC_SI.md         # Đề cương nghiên cứu chi tiết cấp độ Thạc sĩ
 ├── references/                                # Văn hiến và tài liệu tham khảo khoa học
 │   ├── 45_REFERENCES_ANALYSIS.md              # Ma trận phân tích chuyên sâu 45 bài báo đỉnh cao (SIGMOD, VLDB, IEEE ICDE, ACM TODS...)
@@ -39,6 +41,9 @@ d:\CaNhan\csdltt\
 │   ├── index_tuner.py                         # Bộ công cụ tinh chỉnh chỉ mục (Single, Composite, Partial, Covering)
 │   ├── partitioning_engine.py                 # Động cơ phân vùng bảng theo thời gian và Partition Pruning
 │   └── benchmark_runner.py                    # Script tự động chạy đo kiểm và xuất báo cáo so sánh
+├── scripts/                                   # Bộ công cụ sinh báo cáo và trình chiếu tự động
+│   ├── generate_word_report.py                # Script sinh tài liệu Word .docx chuẩn học thuật Thạc sĩ
+│   └── generate_powerpoint_presentation.py    # Script sinh slide PowerPoint .pptx 20 trang hiện đại
 └── README.md                                  # Hướng dẫn tổng quan dự án
 ```
 
@@ -86,10 +91,13 @@ python src/benchmark_runner.py
 
 ---
 
-## 📚 TÀI LIỆU THAM KHẢO VÀ CÔNG BỐ
+## 📚 TÀI LIỆU THAM KHẢO VÀ CÔNG BỐ HỌC THUẬT
 Toàn bộ 45 tài liệu tham khảo khoa học đỉnh cao (ACM SIGMOD, VLDB, IEEE ICDE, ACM TODS) đã được tổng hợp, phân tích chi tiết tại:
-* [Bảng phân tích chuyên sâu 45 tài liệu](file:///d:/CaNhan/csdltt/references/45_REFERENCES_ANALYSIS.md)
-* [Tệp trích dẫn BibTeX chuẩn](file:///d:/CaNhan/csdltt/references/references.bib)
-* [Bản thảo bài báo khoa học chuẩn IMRAD](file:///d:/CaNhan/csdltt/docs/BAI_BAO_KHOA_HOC_HOAN_CHINH.md)
-* [Mã nguồn LaTeX IEEE Transactions](file:///d:/CaNhan/csdltt/docs/PAPER_MANUSCRIPT_IEEE.tex)
-* [Báo cáo môn học CSDL Nâng cao](file:///d:/CaNhan/csdltt/docs/BAO_CAO_MON_HOC_CSDL_NANG_CAO.md)
+* [Báo cáo Tổng kết Chi tiết dạng Microsoft Word (8 chương)](file:///d:/CaNhan/csdltt/docs/BAO_CAO_CSDL_NANG_CAO.docx)
+* [Slide Thuyết trình Bảo vệ Đề tài Microsoft PowerPoint (20 slide 16:9)](file:///d:/CaNhan/csdltt/docs/SLIDE_THUYET_TRINH_CSDL_NANG_CAO.pptx)
+* [Bản thảo bài báo khoa học chuẩn IMRAD (IEEE format)](file:///d:/CaNhan/csdltt/docs/BAI_BAO_KHOA_HOC_HOAN_CHINH.md)
+* [Mã nguồn LaTeX IEEE Transactions hoàn chỉnh](file:///d:/CaNhan/csdltt/docs/PAPER_MANUSCRIPT_IEEE.tex)
+* [Báo cáo môn học CSDL Nâng cao (Markdown)](file:///d:/CaNhan/csdltt/docs/BAO_CAO_MON_HOC_CSDL_NANG_CAO.md)
+* [Bảng phân tích chuyên sâu 45 tài liệu khoa học](file:///d:/CaNhan/csdltt/references/45_REFERENCES_ANALYSIS.md)
+* [Tệp trích dẫn BibTeX chuẩn quốc tế](file:///d:/CaNhan/csdltt/references/references.bib)
+
