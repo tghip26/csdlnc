@@ -37,8 +37,10 @@ d:\CaNhan\csdltt\
 │   ├── BAO_CAO_MON_HOC_CSDL_NANG_CAO.md       # Báo cáo tổng kết chuyên sâu môn học CSDL Nâng cao (Markdown)
 │   └── DE_CUONG_NGHIEN_CUU_THAC_SI.md         # Đề cương nghiên cứu chi tiết cấp độ Thạc sĩ
 ├── references/                                # Văn hiến và tài liệu tham khảo khoa học
+│   ├── 45_REFERENCES_LINKS.md                 # Toàn bộ 45 đường link DOI/PDF chính thức và nguồn xuất bản
 │   ├── 45_REFERENCES_ANALYSIS.md              # Ma trận phân tích chuyên sâu 45 bài báo đỉnh cao (SIGMOD, VLDB, IEEE ICDE, ACM TODS...)
 │   └── references.bib                         # Tệp BibTeX chuẩn quốc tế chứa toàn bộ 45 trích dẫn
+
 ├── data/                                      # Dữ liệu thực nghiệm thực tế
 │   ├── DATASET_GUIDE.md                       # Đặc tả chi tiết 8 bảng quan hệ 3NF và tập truy vấn đối chuẩn
 │   ├── download_and_prepare_data.py           # Script tự động tải CSV thực tế và nạp vào SQLite Database
@@ -112,6 +114,8 @@ Toàn bộ 45 tài liệu tham khảo khoa học đỉnh cao (ACM SIGMOD, VLDB, 
 * [Mã nguồn LaTeX IEEE Transactions hoàn chỉnh](file:///d:/CaNhan/csdltt/docs/PAPER_MANUSCRIPT_IEEE.tex)
 * [Báo cáo môn học CSDL Nâng cao (Markdown)](file:///d:/CaNhan/csdltt/docs/BAO_CAO_MON_HOC_CSDL_NANG_CAO.md)
 * [Bảng phân tích chuyên sâu 45 tài liệu khoa học](file:///d:/CaNhan/csdltt/references/45_REFERENCES_ANALYSIS.md)
+* [Danh sách 45 Đường Link Trực tuyến & Nguồn Xuất bản (DOI/PDF)](file:///d:/CaNhan/csdltt/references/45_REFERENCES_LINKS.md)
 * [Tệp trích dẫn BibTeX chuẩn quốc tế](file:///d:/CaNhan/csdltt/references/references.bib)
+
 
 

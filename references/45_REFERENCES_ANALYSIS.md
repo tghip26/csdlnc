@@ -3,7 +3,8 @@
 Đề tài: **Nghiên cứu, Đánh giá và Tối ưu hóa Hiệu năng Truy vấn trên Cơ sở Dữ liệu Quan hệ Quy mô lớn: Kỹ thuật Tinh chỉnh Chỉ mục Nâng cao, Phân vùng Dữ liệu và Tối ưu hóa Kế hoạch Thực thi**  
 *English*: **Empirical Evaluation and Query Performance Optimization in Large-Scale Relational Databases: Advanced Index Tuning, Data Partitioning, and Execution Plan Optimization**  
 Cấp độ đào tạo: **Thạc sĩ Khoa học Máy tính / Hệ thống Thông tin (Master of Science)**  
-Định dạng trích dẫn: **IEEE / ACM Standard BibTeX**
+Định dạng trích dẫn: **IEEE / ACM Standard BibTeX**  
+🔗 **Tra cứu đường link trực tuyến & nguồn số chính thức**: [Danh sách 45 Đường Link & Nguồn Xuất bản Trực tuyến (45_REFERENCES_LINKS.md)](file:///d:/CaNhan/csdltt/references/45_REFERENCES_LINKS.md)
 
 ---
 
