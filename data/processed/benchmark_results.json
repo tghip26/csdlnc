@@ -1,0 +1,81 @@
+{
+  "exp1": {
+    "flat": {
+      "build_time": 0.0023310184478759766,
+      "recall": 1.0,
+      "p50": 0.0,
+      "p95": 0.5607128143310547,
+      "qps": 5590.1692656270825
+    },
+    "ivf": {
+      "build_time": 0.014193534851074219,
+      "recall": 0.768,
+      "p50": 0.0,
+      "p95": 2.007746696472168,
+      "qps": 6213.967821268779
+    },
+    "hnsw": {
+      "build_time": 2.7994933128356934,
+      "recall": 0.5479999999999999,
+      "p50": 1.1965036392211914,
+      "p95": 3.0072808265686035,
+      "qps": 577.5655325500824
+    }
+  },
+  "exp2": {
+    "BM25_Only": {
+      "ndcg": 1.0,
+      "mrr": 1.0,
+      "recall": 0.02500000000000001,
+      "latency": 6.215802828470866
+    },
+    "Dense_HNSW_Only": {
+      "ndcg": 0.8880814313969331,
+      "mrr": 0.9444444444444444,
+      "recall": 0.022083333333333337,
+      "latency": 1.4507532119750977
+    },
+    "Hybrid_RRF": {
+      "ndcg": 0.9664958708725784,
+      "mrr": 1.0,
+      "recall": 0.024000000000000007,
+      "latency": 7.940069834391276
+    },
+    "Hybrid_Linear_Alpha_0.6": {
+      "ndcg": 0.9533722641783603,
+      "mrr": 0.9444444444444444,
+      "recall": 0.02408333333333334,
+      "latency": 8.982229232788086
+    }
+  },
+  "exp3": [
+    {
+      "scenario": "Low Selectivity (sigma ~ 0.5%)",
+      "pre_filtering_lat": 1.1599063873291016,
+      "post_filtering_lat": 4.144191741943359,
+      "iterative_lat": 7.644891738891602,
+      "adaptive_lat": 1.5969276428222656,
+      "plan_chosen": "Pre-filtering (Scan on tiny subset)",
+      "est_selectivity": 0.005
+    },
+    {
+      "scenario": "Medium Selectivity (sigma ~ 6%)",
+      "pre_filtering_lat": 1.9843578338623047,
+      "post_filtering_lat": 4.333972930908203,
+      "iterative_lat": 6.648063659667969,
+      "adaptive_lat": 9.923458099365234,
+      "plan_chosen": "In-Graph Iterative Filtering (ACORN-style)",
+      "est_selectivity": 0.075
+    },
+    {
+      "scenario": "High Selectivity (sigma ~ 35%)",
+      "pre_filtering_lat": 3.547191619873047,
+      "post_filtering_lat": 4.19926643371582,
+      "iterative_lat": 6.13093376159668,
+      "adaptive_lat": 2.129793167114258,
+      "plan_chosen": "Post-filtering (HNSW Over-sampling)",
+      "est_selectivity": 0.555
+    }
+  ],
+  "runtime_s": 11.871501445770264
+}

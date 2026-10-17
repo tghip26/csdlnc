@@ -1,0 +1,1002 @@
+[
+  {
+    "query_id": "q_0000",
+    "query_text": "efficient wal and buffer pool in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0001",
+    "query_text": "efficient milvus and vector search in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0002",
+    "query_text": "efficient replication and raft in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0003",
+    "query_text": "efficient recall and ranking in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0004",
+    "query_text": "efficient attention and transformer in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0005",
+    "query_text": "efficient sql and concurrency in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0006",
+    "query_text": "efficient product quantization and similarity in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0007",
+    "query_text": "efficient paxos and sharding in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0008",
+    "query_text": "efficient recall and tf-idf in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0009",
+    "query_text": "efficient gradient descent and fine-tuning in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0010",
+    "query_text": "efficient b-tree and sql in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0011",
+    "query_text": "efficient milvus and hnsw in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0012",
+    "query_text": "efficient cap theorem and sharding in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0013",
+    "query_text": "efficient reciprocal rank fusion and tf-idf in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0014",
+    "query_text": "efficient transformer and attention in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0015",
+    "query_text": "efficient acid and wal in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0016",
+    "query_text": "efficient milvus and similarity in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0017",
+    "query_text": "efficient sharding and replication in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0018",
+    "query_text": "efficient tf-idf and ndcg in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0019",
+    "query_text": "efficient loss function and encoder in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0020",
+    "query_text": "efficient wal and acid in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0021",
+    "query_text": "efficient hnsw and embedding in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0022",
+    "query_text": "efficient two-phase commit and raft in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0023",
+    "query_text": "efficient inverted index and precision in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0024",
+    "query_text": "efficient transformer and attention in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0025",
+    "query_text": "efficient sql and locking in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0026",
+    "query_text": "efficient product quantization and hnsw in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0027",
+    "query_text": "efficient consensus and two-phase commit in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0028",
+    "query_text": "efficient relevance and reciprocal rank fusion in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0029",
+    "query_text": "efficient bert and encoder in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0030",
+    "query_text": "efficient index and transaction in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0031",
+    "query_text": "efficient hnsw and vector search in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0032",
+    "query_text": "efficient consensus and paxos in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0033",
+    "query_text": "efficient tokenization and ranking in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0034",
+    "query_text": "efficient deep learning and gradient descent in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0035",
+    "query_text": "efficient sql and concurrency in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0036",
+    "query_text": "efficient embedding and lsh in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0037",
+    "query_text": "efficient grpc and cap theorem in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0038",
+    "query_text": "efficient bm25 and reciprocal rank fusion in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0039",
+    "query_text": "efficient fine-tuning and gradient descent in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0040",
+    "query_text": "efficient buffer pool and wal in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0041",
+    "query_text": "efficient lsh and product quantization in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0042",
+    "query_text": "efficient grpc and distributed transaction in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0043",
+    "query_text": "efficient tokenization and reciprocal rank fusion in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0044",
+    "query_text": "efficient deep learning and transformer in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0045",
+    "query_text": "efficient concurrency and acid in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0046",
+    "query_text": "efficient vector search and hnsw in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0047",
+    "query_text": "efficient sharding and replication in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0048",
+    "query_text": "efficient precision and bm25 in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0049",
+    "query_text": "efficient neural network and cross-entropy in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0050",
+    "query_text": "efficient locking and acid in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0051",
+    "query_text": "efficient vector search and similarity in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0052",
+    "query_text": "efficient grpc and cap theorem in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0053",
+    "query_text": "efficient ndcg and recall in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0054",
+    "query_text": "efficient bert and attention in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0055",
+    "query_text": "efficient wal and index in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0056",
+    "query_text": "efficient hnsw and approximate nearest neighbor in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0057",
+    "query_text": "efficient paxos and fault tolerance in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0058",
+    "query_text": "efficient tf-idf and tokenization in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0059",
+    "query_text": "efficient transformer and loss function in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0060",
+    "query_text": "efficient index and query optimization in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0061",
+    "query_text": "efficient high-dimensional and milvus in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0062",
+    "query_text": "efficient consensus and grpc in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0063",
+    "query_text": "efficient tf-idf and reciprocal rank fusion in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0064",
+    "query_text": "efficient loss function and deep learning in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0065",
+    "query_text": "efficient relational and sql in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0066",
+    "query_text": "efficient qdrant and hnsw in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0067",
+    "query_text": "efficient consensus and fault tolerance in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0068",
+    "query_text": "efficient tf-idf and tokenization in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0069",
+    "query_text": "efficient encoder and bert in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0070",
+    "query_text": "efficient locking and relational in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0071",
+    "query_text": "efficient milvus and qdrant in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0072",
+    "query_text": "efficient paxos and distributed transaction in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0073",
+    "query_text": "efficient inverted index and precision in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0074",
+    "query_text": "efficient deep learning and bert in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0075",
+    "query_text": "efficient buffer pool and relational in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0076",
+    "query_text": "efficient approximate nearest neighbor and similarity in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0077",
+    "query_text": "efficient sharding and paxos in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0078",
+    "query_text": "efficient bm25 and inverted index in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0079",
+    "query_text": "efficient fine-tuning and transformer in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0080",
+    "query_text": "efficient locking and query optimization in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0081",
+    "query_text": "efficient vector search and similarity in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0082",
+    "query_text": "efficient cap theorem and consensus in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0083",
+    "query_text": "efficient tokenization and recall in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0084",
+    "query_text": "efficient bert and encoder in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0085",
+    "query_text": "efficient buffer pool and sql in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0086",
+    "query_text": "efficient lsh and embedding in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0087",
+    "query_text": "efficient fault tolerance and replication in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0088",
+    "query_text": "efficient ndcg and reciprocal rank fusion in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0089",
+    "query_text": "efficient transformer and deep learning in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0090",
+    "query_text": "efficient b-tree and concurrency in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0091",
+    "query_text": "efficient high-dimensional and similarity in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0092",
+    "query_text": "efficient sharding and replication in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0093",
+    "query_text": "efficient recall and ndcg in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0094",
+    "query_text": "efficient transformer and attention in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0095",
+    "query_text": "efficient buffer pool and sql in modern database systems",
+    "target_topic": "Database Systems",
+    "filter": {
+      "category": "Database Systems",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0096",
+    "query_text": "efficient high-dimensional and embedding in modern vector databases",
+    "target_topic": "Vector Databases",
+    "filter": {
+      "category": "Vector Databases",
+      "min_year": 2021,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0097",
+    "query_text": "efficient consensus and distributed transaction in modern distributed systems",
+    "target_topic": "Distributed Systems",
+    "filter": {
+      "category": "Distributed Systems",
+      "min_year": 2019,
+      "access_level": "all"
+    }
+  },
+  {
+    "query_id": "q_0098",
+    "query_text": "efficient inverted index and reciprocal rank fusion in modern information retrieval",
+    "target_topic": "Information Retrieval",
+    "filter": {
+      "category": "Information Retrieval",
+      "min_year": 2019,
+      "access_level": "public"
+    }
+  },
+  {
+    "query_id": "q_0099",
+    "query_text": "efficient gradient descent and encoder in modern machine learning",
+    "target_topic": "Machine Learning",
+    "filter": {
+      "category": "Machine Learning",
+      "min_year": 2021,
+      "access_level": "all"
+    }
+  }
+]

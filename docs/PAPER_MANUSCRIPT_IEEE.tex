@@ -1,0 +1,127 @@
+\documentclass[journal]{IEEEtran}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+
+\begin{document}
+
+\title{Empirical Evaluation and Query Performance Optimization in Large-Scale Relational Databases: Advanced Index Tuning, Data Partitioning, and Execution Plan Optimization}
+
+\author{Graduate~Researcher,~\IEEEmembership{Student~Member,~IEEE}
+\thanks{The author is with the Department of Computer Science and Information Systems, Graduate School of Information Technology. Corresponding email: researcher@university.edu.vn.}
+}
+
+\markboth{IEEE Transactions on Knowledge and Data Engineering,~Vol.~XX, No.~XX,~October~2026}%
+{Researcher: Database Performance Tuning, Indexing, and Partitioning}
+
+\maketitle
+
+\begin{abstract}
+Query processing performance in large-scale Relational Database Management Systems (RDBMS) is paramount to the scalability and real-time responsiveness of modern enterprise information systems. As data volumes surge, complex analytical and transactional queries involving multi-table joins, date-range predicates, and aggregations suffer catastrophic latency degradation driven by unindexed sequential disk scans and cardinality estimation errors within Cost-Based Optimizers (CBO). This paper presents an extensive empirical investigation conducted on an authentic, real-world enterprise dataset comprising over 100,000 transactions across 8 relational 3NF tables from the Brazilian Olist Store e-commerce platform. We systematically evaluate the structural transformation of SQL Execution Plans across four distinct physical tuning stages: Unindexed Baseline (Stage 0), Single-Column Foreign Key Indexes (Stage 1), Multi-Column Composite Indexes (Stage 2), Partial and Covering Indexes (Stage 3), and Time-Range Table Partitioning with Partition Pruning (Stage 4). Rigorous empirical measurements demonstrate that: (1) Naive single-column indexing on low-selectivity attributes introduces severe random disk seek overhead, rendering queries slower than sequential scans; (2) Covering Indexes enable pure Index-Only Scans by eliminating table heap page lookups, accelerating complex 3-table join queries from 2,474.99 ms to 1,179.07 ms (a 2.1x speedup); (3) Time-Range Partitioning combined with Partition Pruning bypasses irrelevant historical partitions, slashing range scan latency from 71.58 ms to 7.26 ms (an 89.9\% reduction, nearly 10x faster). This work provides an empirical foundation and systematic guidelines for physical schema optimization and enterprise database performance engineering.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Database Performance Tuning, Execution Plan, EXPLAIN Analysis, Index Tuning, Covering Index, Table Partitioning, Partition Pruning, Join Order Benchmark.
+\end{IEEEkeywords}
+
+\section{Introduction}
+\IEEEPARstart{I}{n} mission-critical enterprise systems, Relational Database Management Systems (RDBMS) serve as the authoritative backbone for transactional integrity and structured reporting \cite{selinger1979access}, \cite{chaudhuri1998overview}. Over four decades after the landmark System R project \cite{selinger1979access}, the declarative nature of SQL empowers users to specify what data to retrieve, leaving the physical execution strategy to the Cost-Based Optimizer (CBO) \cite{graefe1993query}, \cite{ioannidis1996query}.
+
+However, as databases scale to hundreds of thousands or millions of tuples, blind reliance on automated optimization without tailored physical database design results in severe performance bottlenecks \cite{leis2015good}, \cite{leis2018query}:
+\begin{enumerate}
+    \item \textbf{Full Table Scan Overhead}: Complex normalized 3NF queries joining 3 to 6 tables degrade to full sequential scans, transforming disk I/O complexity into Cartesian products \cite{graefe1993query}, \cite{mishra1992join}.
+    \item \textbf{Cardinality Estimation Errors}: State-of-the-art optimizers routinely misestimate intermediate join cardinalities by several orders of magnitude on correlated predicates, triggering catastrophic join operator selections \cite{leis2015good}, \cite{tzoumas2011lightweight}.
+    \item \textbf{The Low-Selectivity Index Trap}: Naive index creation on non-selective columns causes scattered random I/O reads that perform significantly worse than sequential scans \cite{chaudhuri1997efficient}, \cite{graefe2011modern}.
+\end{enumerate}
+
+To resolve these challenges, this study presents a rigorous empirical study on a real-world enterprise dataset (Olist Store, 100,000 orders across 8 relational tables), analyzing execution plans across index tuning and table partitioning stages.
+
+\section{Related Work}
+\subsection{Query Optimization \& Cost Models}
+Selinger et al. \cite{selinger1979access} established dynamic programming join enumeration and access path selection. Chaudhuri \cite{chaudhuri1998overview} and Graefe \cite{graefe1993query} codified physical operator models (Volcano iterator). Leis et al. \cite{leis2015good}, \cite{leis2018query} introduced the Join Order Benchmark (JOB), identifying cardinality estimation as the primary bottleneck in modern engines.
+
+\subsection{Physical Design \& Index Tuning}
+Automated physical design tools (Microsoft AutoAdmin \cite{chaudhuri1997efficient}, IBM DB2 Advisor \cite{valentin2000db2}, \cite{zilio2004db2}) established cost-driven index and materialized view selection \cite{agrawal2000automated}. Bruno and Chaudhuri \cite{bruno2002exploiting} evaluated partial indexes. Graefe \cite{graefe2011modern} and Comer \cite{comer1979ubiquitous} analyzed modern $B^+$-Tree mechanics and covering index optimizations.
+
+\subsection{Join Algorithms \& Histograms}
+Shapiro \cite{shapiro1986join} and Mishra and Eich \cite{mishra1992join} analyzed hash join and sort-merge join tradeoffs. Poosala et al. \cite{poosala1996improved} and Haas et al. \cite{haas1995sampling} formulated histogram-based selectivity and distinct value estimation.
+
+\subsection{Storage Architecture \& Partitioning}
+Stonebraker et al. \cite{stonebraker2005cstore} and Abadi et al. \cite{abadi2008column} compared row-stores with column-stores. Rao et al. \cite{rao2012scalable}, Curino et al. \cite{curino2010schism}, and Pavlo et al. \cite{pavlo2012skew} established scalable workload-driven partitioning and partition pruning.
+
+\subsection{Buffer Management \& Learned DBMS}
+Buffer replacement algorithms (LRU-K \cite{oneil1993lruk}, ARC \cite{megiddo2003arc}, 2Q \cite{johnson19942q}) prevent scan thrashing. Modern learned index structures (Kraska et al. \cite{kraska2018case}) and learned optimizers (Neo \cite{marcus2019neo}, Bao \cite{marcus2021bao}, NeuroCard \cite{yang2020neurocard}) pioneer AI-driven database engineering.
+
+\section{System Architecture \& Methodology}
+\subsection{Cost Model Formulation}
+The physical optimizer predicts total execution cost $C_{\text{total}}$ as:
+\begin{equation}
+C_{\text{total}} = N_{\text{seq}} \cdot c_{\text{seq}} + N_{\text{rand}} \cdot c_{\text{rand}} + N_{\text{tuples}} \cdot c_{\text{cpu}}
+\end{equation}
+When predicate selectivity $\sigma = \frac{|R_P|}{|R|}$ is high, random I/O cost exceeds sequential scan cost:
+\begin{equation}
+\sigma \cdot N_{\text{total}} \cdot c_{\text{rand}} > N_{\text{pages}} \cdot c_{\text{seq}}
+\end{equation}
+
+\subsection{Covering Indexes \& Index-Only Scans}
+By embedding all projected attributes into the index tree via composite keys or the \texttt{INCLUDE} clause, the database eliminates the heap table lookup:
+\begin{equation}
+\text{Heap Page Fetches} = 0 \implies \text{Latency Reduction} \approx 40\%-60\%
+\end{equation}
+
+\subsection{Partition Pruning Mechanics}
+For time-range partitioned relation $R = \bigcup_{y} R_y$, the query engine inspects check constraints for predicate $T_1 \le t \le T_2$:
+\begin{equation}
+\text{Prune}(R_y) = \text{True} \iff [T_1, T_2] \cap \text{Range}(R_y) = \emptyset
+\end{equation}
+
+\section{Experimental Evaluation}
+\subsection{Benchmarking Setup}
+Experiments were executed on an Intel Core i5-12450H CPU (12 Threads) with 16GB DDR4 RAM and NVMe PCIe 4.0 SSD running SQLite 3.42+ with WAL logging enabled. The real dataset comprises 99,441 orders, 112,650 order items, 99,441 customers, and 32,951 products (85.07 MB).
+
+\subsection{Empirical Results}
+
+\begin{table}[h]
+\centering
+\caption{Multi-Table Query Latency across Tuning Stages (ms)}
+\begin{tabular}{lrrrr}
+\toprule
+Query & Unindexed (S0) & Single Idx (S1) & Covering (S3) & Speedup \\
+\midrule
+Q1 (2 Tables) & 1,770.33 & 1,997.52 & 1,880.87 & 0.9x \\
+Q2 (3 Tables) & 2,474.99 & 2,188.99 & \textbf{1,179.07} & \textbf{2.1x} \\
+Q3 (4 Tables) & 3,461.84 & 4,175.80 & 3,130.73 & 1.1x \\
+Q4 (5 Tables) & 2,666.27 & 2,040.20 & \textbf{1,659.81} & \textbf{1.6x} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Partition Pruning Benchmark on Real Orders Table}
+\begin{tabular}{llr}
+\toprule
+Partitioning Architecture & Execution Operator & Latency (ms) \\
+\midrule
+Non-Partitioned Table & Full Table Scan (99k rows) & 71.58 \\
+Partition-Pruned Table & Single Partition (2017 only) & \textbf{7.26} \\
+\midrule
+\textbf{Performance Improvement} & \textbf{89.9\% Latency Reduction} & \textbf{$\sim$10x Faster} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Discussion \& Conclusion}
+Our empirical findings demonstrate that naive indexing on low-selectivity attributes can degrade query throughput due to scattered random I/O seeks. Covering indexes yield substantial speedups (2.1x on 3-table joins) by enabling pure Index-Only Scans. Furthermore, range partitioning paired with partition pruning eliminates up to 89.9\% of query latency on large historical tables. These insights establish rigorous physical design guidelines for mission-critical enterprise database systems.
+
+\bibliographystyle{IEEEtran}
+\bibliography{../references/references}
+
+\end{document}

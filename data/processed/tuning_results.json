@@ -1,0 +1,65 @@
+{
+  "queries": {
+    "Q1": {
+      "title": "Báo cáo Doanh thu theo Bang & Trạng thái Giao hàng (2-Table Join + Aggregation)",
+      "stage0_unindexed_ms": 1770.3293561935425,
+      "stage0_plan": "SCAN o | SEARCH c USING INDEX sqlite_autoindex_customers_1 (customer_id=?) | USE TEMP B-TREE FOR GROUP BY | USE TEMP B-TREE FOR ORDER BY",
+      "stage1_single_ms": 1997.5186983744304,
+      "stage1_plan": "SEARCH o USING INDEX idx_orders_status (order_status=?) | SEARCH c USING INDEX sqlite_autoindex_customers_1 (customer_id=?) | USE TEMP B-TREE FOR GROUP BY | USE TEMP B-TREE FOR ORDER BY",
+      "stage3_advanced_ms": 1880.8656533559163,
+      "stage3_plan": "SEARCH o USING INDEX idx_orders_status_ts (order_status=? AND order_purchase_timestamp>?) | SEARCH c USING INDEX sqlite_autoindex_customers_1 (customer_id=?) | USE TEMP B-TREE FOR GROUP BY | USE TEMP B-TREE FOR ORDER BY",
+      "speedup_factor": 0.9412311575974869
+    },
+    "Q2": {
+      "title": "Top 10 Ngành hàng Doanh thu Cao nhất Năm 2017 (3-Table Join + Range Filter)",
+      "stage0_unindexed_ms": 2474.9943017959595,
+      "stage0_plan": "SCAN oi | BLOOM FILTER ON o (order_id=?) | BLOOM FILTER ON p (product_id=?) | SEARCH o USING INDEX sqlite_autoindex_orders_1 (order_id=?) | SEARCH p USING INDEX sqlite_autoindex_products_1 (product_id=?) | USE TEMP B-TREE FOR GROUP BY | USE TEMP B-TREE FOR ORDER BY",
+      "stage1_single_ms": 2188.9923413594565,
+      "stage1_plan": "SEARCH o USING INDEX idx_orders_ts (order_purchase_timestamp>? AND order_purchase_timestamp<?) | SEARCH oi USING INDEX sqlite_autoindex_order_items_1 (order_id=?) | SEARCH p USING INDEX sqlite_autoindex_products_1 (product_id=?) | USE TEMP B-TREE FOR GROUP BY | USE TEMP B-TREE FOR ORDER BY",
+      "stage3_advanced_ms": 1179.0722211201985,
+      "stage3_plan": "SEARCH o USING INDEX idx_orders_ts (order_purchase_timestamp>? AND order_purchase_timestamp<?) | SEARCH oi USING INDEX sqlite_autoindex_order_items_1 (order_id=?) | SEARCH p USING INDEX sqlite_autoindex_products_1 (product_id=?) | USE TEMP B-TREE FOR GROUP BY | USE TEMP B-TREE FOR ORDER BY",
+      "speedup_factor": 2.0991032249445647
+    },
+    "Q3": {
+      "title": "Tương quan Đánh giá Phản hồi & Cước phí Vận chuyển (4-Table Join)",
+      "stage0_unindexed_ms": 3461.840510368347,
+      "stage0_plan": "SCAN r | SEARCH o USING INDEX sqlite_autoindex_orders_1 (order_id=?) | SEARCH oi USING INDEX sqlite_autoindex_order_items_1 (order_id=?) | SEARCH s USING INDEX sqlite_autoindex_sellers_1 (seller_id=?) | USE TEMP B-TREE FOR GROUP BY | USE TEMP B-TREE FOR count(DISTINCT) | USE TEMP B-TREE FOR ORDER BY",
+      "stage1_single_ms": 4175.8027871449785,
+      "stage1_plan": "SEARCH o USING INDEX idx_orders_status (order_status=?) | SEARCH r USING INDEX idx_reviews_order (order_id=?) | SEARCH oi USING INDEX sqlite_autoindex_order_items_1 (order_id=?) | SEARCH s USING INDEX sqlite_autoindex_sellers_1 (seller_id=?) | USE TEMP B-TREE FOR GROUP BY | USE TEMP B-TREE FOR count(DISTINCT) | USE TEMP B-TREE FOR ORDER BY",
+      "stage3_advanced_ms": 3130.730311075846,
+      "stage3_plan": "SEARCH o USING INDEX idx_orders_status (order_status=?) | SEARCH r USING INDEX idx_reviews_order (order_id=?) | SEARCH oi USING INDEX sqlite_autoindex_order_items_1 (order_id=?) | SEARCH s USING INDEX sqlite_autoindex_sellers_1 (seller_id=?) | USE TEMP B-TREE FOR GROUP BY | USE TEMP B-TREE FOR count(DISTINCT) | USE TEMP B-TREE FOR ORDER BY",
+      "speedup_factor": 1.1057613292723123
+    },
+    "Q4": {
+      "title": "Phân tích Khách hàng Chi tiêu Cao & Phương thức Thanh toán (5-Table Join)",
+      "stage0_unindexed_ms": 2666.2726402282715,
+      "stage0_plan": "SCAN o | SEARCH op USING INDEX sqlite_autoindex_order_payments_1 (order_id=?) | SEARCH c USING INDEX sqlite_autoindex_customers_1 (customer_id=?) | SEARCH oi USING INDEX sqlite_autoindex_order_items_1 (order_id=?) | SEARCH p USING COVERING INDEX sqlite_autoindex_products_1 (product_id=?) | USE TEMP B-TREE FOR GROUP BY | USE TEMP B-TREE FOR count(DISTINCT) | USE TEMP B-TREE FOR ORDER BY",
+      "stage1_single_ms": 2040.2042865753174,
+      "stage1_plan": "SEARCH o USING INDEX idx_orders_status (order_status=?) | SEARCH op USING INDEX idx_payments_order (order_id=?) | SEARCH c USING INDEX sqlite_autoindex_customers_1 (customer_id=?) | SEARCH oi USING INDEX sqlite_autoindex_order_items_1 (order_id=?) | SEARCH p USING COVERING INDEX sqlite_autoindex_products_1 (product_id=?) | USE TEMP B-TREE FOR GROUP BY | USE TEMP B-TREE FOR count(DISTINCT) | USE TEMP B-TREE FOR ORDER BY",
+      "stage3_advanced_ms": 1659.8116556803386,
+      "stage3_plan": "SEARCH o USING INDEX idx_orders_status (order_status=?) | SEARCH op USING INDEX idx_payments_order (order_id=?) | SEARCH c USING INDEX sqlite_autoindex_customers_1 (customer_id=?) | SEARCH oi USING COVERING INDEX idx_items_covering (order_id=?) | SEARCH p USING COVERING INDEX sqlite_autoindex_products_1 (product_id=?) | USE TEMP B-TREE FOR GROUP BY | USE TEMP B-TREE FOR count(DISTINCT) | USE TEMP B-TREE FOR ORDER BY",
+      "speedup_factor": 1.6063705969912565
+    },
+    "Q5": {
+      "title": "Truy vấn Khoảng Thời gian Đơn hàng (Time-Window Range Query)",
+      "stage0_unindexed_ms": 92.93341636657715,
+      "stage0_plan": "SCAN orders | USE TEMP B-TREE FOR GROUP BY | USE TEMP B-TREE FOR ORDER BY",
+      "stage1_single_ms": 68.68871053059895,
+      "stage1_plan": "SEARCH orders USING INDEX idx_orders_ts (order_purchase_timestamp>? AND order_purchase_timestamp<?) | USE TEMP B-TREE FOR GROUP BY | USE TEMP B-TREE FOR ORDER BY",
+      "stage3_advanced_ms": 123.31740061442058,
+      "stage3_plan": "SEARCH orders USING INDEX idx_orders_ts (order_purchase_timestamp>? AND order_purchase_timestamp<?) | USE TEMP B-TREE FOR GROUP BY | USE TEMP B-TREE FOR ORDER BY",
+      "speedup_factor": 0.7536115414657032
+    }
+  },
+  "partitioning": {
+    "unpartitioned_latency_ms": 71.57506942749023,
+    "partitioned_latency_ms": 7.2605133056640625,
+    "speedup_percentage": 89.85608625497822,
+    "unpartitioned_plan": [
+      "(4, 0, 0, 'SEARCH orders USING INDEX idx_orders_ts (order_purchase_timestamp>? AND order_purchase_timestamp<?)')"
+    ],
+    "partitioned_plan": [
+      "(4, 0, 0, 'SEARCH orders_2017 USING INDEX idx_orders2017_ts (order_purchase_timestamp>? AND order_purchase_timestamp<?)')"
+    ]
+  }
+}
