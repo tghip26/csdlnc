@@ -25,13 +25,36 @@ OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "docs")
 OUTPUT_PATH = os.path.join(OUTPUT_DIR, "BAO_CAO_CSDL_NANG_CAO.docx")
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "processed")
 TUNING_RES_PATH = os.path.join(DATA_DIR, "tuning_results.json")
+IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "docs", "images")
 
 # Màu sắc chủ đạo: Navy Blue (#1F4E79), Slate Gray (#595959), Dark Charcoal (#262626)
 COLOR_PRIMARY = RGBColor(31, 78, 121)
 COLOR_SECONDARY = RGBColor(89, 89, 89)
 COLOR_TEXT = RGBColor(38, 38, 38)
 
+def add_figure_with_caption(doc, img_filename, caption_text, width_inches=6.2):
+    img_path = os.path.join(IMG_DIR, img_filename)
+    if os.path.exists(img_path):
+        p_img = doc.add_paragraph()
+        p_img.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p_img.paragraph_format.space_before = Pt(10)
+        p_img.paragraph_format.space_after = Pt(3)
+        run = p_img.add_run()
+        run.add_picture(img_path, width=Inches(width_inches))
+        
+        p_cap = doc.add_paragraph()
+        p_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p_cap.paragraph_format.space_before = Pt(2)
+        p_cap.paragraph_format.space_after = Pt(12)
+        r_cap = p_cap.add_run(caption_text)
+        r_cap.font.name = "Times New Roman"
+        r_cap.font.size = Pt(10)
+        r_cap.font.italic = True
+        r_cap.font.bold = True
+        r_cap.font.color.rgb = COLOR_PRIMARY
+
 def set_cell_shading(cell, color_hex):
+
     shd = parse_xml(f'<w:shd {nsdecls("w")} w:fill="{color_hex}"/>')
     cell._tc.get_or_add_tcPr().append(shd)
 
@@ -196,6 +219,16 @@ def build_word_document():
         "• RQ3: Kỹ thuật phân vùng bảng theo dải thời gian (Range Partitioning) kết hợp cơ chế loại trừ phân vùng (Partition Pruning) đem lại mức độ cắt giảm I/O đĩa và tăng tốc thời gian truy vấn bao nhiêu phần trăm trên dữ liệu thực tế?"
     )
 
+    doc.add_heading("1.2. Mô hình Dữ liệu Thực tế và Sơ đồ Quan hệ Thực thể (ERD)", level=2)
+    p = doc.add_paragraph()
+    p.add_run(
+        "Dữ liệu thực nghiệm của đề tài là 100% dữ liệu giao dịch thương mại điện tử thực tế từ sàn Olist Store tại Brazil, "
+        "được cấu trúc thành 8 bảng quan hệ chuẩn hóa 3NF với đầy đủ các khóa chính, khóa ngoại và ràng buộc toàn vẹn. "
+        "Tổng dung lượng CSDL vật lý đạt 85,07 MB với hơn 500.000 dòng bản ghi tổng cộng:"
+    )
+    add_figure_with_caption(doc, "fig1_database_erd.png", "Hình 1.1: Sơ đồ Quan hệ Thực thể (ERD) 8 bảng chuẩn 3NF của CSDL thương mại điện tử thực tế Olist Store (Quy mô 100.000 đơn hàng, 85,07 MB)")
+
+
     # CHƯƠNG 2
     doc.add_heading("CHƯƠNG 2: CẤU TRÚC LƯU TRỮ VẬT LÝ VÀ QUẢN LÝ BỘ ĐỆM TRANG (BUFFER POOL)", level=1)
     p = doc.add_paragraph()
@@ -220,10 +253,17 @@ def build_word_document():
         "của cột A, sau đó đến B, rồi đến C. Quy tắc vàng khi thiết kế chỉ mục phức hợp là đặt cột lọc đẳng thức (=) lên đầu, tiếp theo là cột kết nối (JOIN), và cuối cùng là cột lọc khoảng (<, >, BETWEEN).\n\n"
         "2. Chỉ mục có điều kiện (Partial Index): Chỉ lập chỉ mục trên tập con các bản ghi thỏa mãn điều kiện vị từ (ví dụ: WHERE order_status = 'delivered'). Kỹ thuật này giúp tiết kiệm "
         "tới 70% dung lượng đĩa của cây chỉ mục và giảm chi phí cập nhật chỉ mục khi ghi dữ liệu (Bruno & Chaudhuri 2002).\n\n"
+    )
+    add_figure_with_caption(doc, "fig2_order_status_distribution.png", "Hình 3.1: Phân bố số lượng và tỷ lệ trạng thái đơn hàng trong CSDL thực tế – Minh chứng thực nghiệm cho Hiện tượng Nghịch lý Độ chọn lọc thấp (Trạng thái 'delivered' chiếm 97,02%)")
+
+    p = doc.add_paragraph()
+    p.add_run(
         "3. Chỉ mục bao phủ (Covering Index) & Quét thuần chỉ mục (INDEX-ONLY SCAN): Khi tất cả các thuộc tính xuất hiện trong câu lệnh SELECT đều nằm sẵn trong cây chỉ mục B-Tree, "
         "công cụ CSDL hoàn toàn không cần phải thực hiện thao tác đọc trang bảng dữ liệu (Heap Table Lookups). Điều này triệt tiêu toàn bộ chi phí I/O đọc đĩa ngẫu nhiên, giúp câu truy vấn "
         "đạt tốc độ tối đa."
     )
+    add_figure_with_caption(doc, "fig8_index_scan_vs_index_only.png", "Hình 3.2: So sánh bản chất vật lý giữa Index Scan thông thường (phải đọc Random I/O vào Table Heap) và Covering Index (INDEX-ONLY SCAN triệt tiêu 100% Heap Lookups)")
+
 
     # CHƯƠNG 4
     doc.add_heading("CHƯƠNG 4: BỘ TỐI ƯU HÓA TRUY VẤN VÀ CÁC THUẬT TOÁN KẾT NỐI ĐA BẢNG (JOINS)", level=1)
@@ -238,6 +278,9 @@ def build_word_document():
         "• Hash Join: Tối ưu cho các bảng lớn kết nối bằng phép so sánh bằng (=), nạp bảng nhỏ vào bảng băm trong bộ nhớ RAM (work_mem) rồi quét bảng lớn.\n"
         "• Sort-Merge Join: Tối ưu khi cả hai bảng đều lớn và dữ liệu đã được chỉ mục B-Tree sắp xếp sẵn theo thứ tự khóa kết nối."
     )
+    add_figure_with_caption(doc, "fig4_top_categories_revenue.png", "Hình 4.1: Doanh thu thực tế theo ngành hàng và số lượng đơn hàng năm 2017 (Kết quả thực thi câu truy vấn đối chuẩn Q2 kết nối 3 bảng)")
+    add_figure_with_caption(doc, "fig5_payment_distribution.png", "Hình 4.2: Cơ cấu phương thức thanh toán và số kỳ trả góp trong bảng order_payments (Truy vấn đối chuẩn Q4 kết nối 5 bảng)")
+
 
     # CHƯƠNG 5
     doc.add_heading("CHƯƠNG 5: PHÂN VÙNG BẢNG VÀ CƠ CHẾ CẮT TỈA PHÂN VÙNG (PARTITION PRUNING)", level=1)
@@ -249,6 +292,8 @@ def build_word_document():
         "bộ tối ưu hóa truy vấn sẽ kiểm tra các ràng buộc kiểm tra của từng phân vùng và tự động loại bỏ hoàn toàn các phân vùng không chứa dữ liệu thỏa mãn khỏi cây kế hoạch thực thi. "
         "Thay vì phải quét toàn bộ bảng 100.000 dòng, hệ thống chỉ đọc phân vùng của năm 2017, cắt giảm trực tiếp từ 60% đến 90% số lượng trang đĩa cần đọc."
     )
+    add_figure_with_caption(doc, "fig3_orders_time_series_partitioning.png", "Hình 5.1: Chuỗi thời gian phân bố đơn hàng thực tế (2016 - 2018) và ranh giới phân vùng bảng phục vụ kỹ thuật Cắt tỉa Phân vùng (Partition Pruning)")
+
 
     # CHƯƠNG 6
     doc.add_heading("CHƯƠNG 6: GIAO DỊCH, ACID, KIỂM SOÁT ĐỒNG THỜI VÀ PHỤC HỒI DỮ LIỆU", level=1)
@@ -295,6 +340,7 @@ def build_word_document():
     set_table_styling(table_q)
 
     doc.add_paragraph().paragraph_format.space_after = Pt(8)
+    add_figure_with_caption(doc, "fig6_query_latency_comparison.png", "Hình 7.1: Biểu đồ đối sánh thời gian thực thi (Latency) của tập truy vấn đối chuẩn Q1 - Q4 qua 3 giai đoạn tinh chỉnh (Stage 0, Stage 1 và Stage 3)")
 
     doc.add_heading("7.2. Bảng Đối chuẩn Kỹ thuật Phân vùng Bảng và Cắt tỉa (Partition Pruning)", level=2)
     
@@ -315,6 +361,8 @@ def build_word_document():
     set_table_styling(table_p)
 
     doc.add_paragraph().paragraph_format.space_after = Pt(8)
+    add_figure_with_caption(doc, "fig7_partition_pruning_performance.png", "Hình 7.2: Hiệu quả cắt giảm thời gian thực thi và khối lượng dữ liệu I/O đĩa của kỹ thuật Cắt tỉa Phân vùng trên câu truy vấn Q5 (Tăng tốc xấp xỉ ~10 lần)")
+
 
     doc.add_heading("7.3. Phân tích Chuyên sâu Kế hoạch Thực thi (Execution Plan Deep Dive)", level=2)
     p = doc.add_paragraph()

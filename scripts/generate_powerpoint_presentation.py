@@ -22,6 +22,7 @@ if sys.platform.startswith("win"):
 
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "docs")
 OUTPUT_PATH = os.path.join(OUTPUT_DIR, "SLIDE_THUYET_TRINH_CSDL_NANG_CAO.pptx")
+IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "docs", "images")
 
 # Palette màu sắc học thuật cao cấp
 COLOR_NAVY = RGBColor(24, 43, 73)      # #182B49 - Nền chính tiêu đề & header
@@ -76,6 +77,27 @@ def add_card(slide, left, top, width, height, title="", bg_color=COLOR_CARD_BG, 
         p.font.color.rgb = COLOR_NAVY
         p.space_after = Pt(6)
     return card
+
+def add_image_slide(prs, title_text, category_text, img_filename, max_width_in=11.7, max_height_in=5.7):
+    blank_layout = prs.slide_layouts[6]
+    slide = prs.slides.add_slide(blank_layout)
+    add_header(slide, title_text, category_text)
+    img_path = os.path.join(IMG_DIR, img_filename)
+    if os.path.exists(img_path):
+        from PIL import Image
+        with Image.open(img_path) as im:
+            orig_w, orig_h = im.size
+        aspect = orig_w / orig_h
+        target_h = max_height_in
+        target_w = target_h * aspect
+        if target_w > max_width_in:
+            target_w = max_width_in
+            target_h = target_w / aspect
+        left_in = (13.333 - target_w) / 2
+        top_in = 1.35 + (max_height_in - target_h) / 2
+        slide.shapes.add_picture(img_path, Inches(left_in), Inches(top_in), width=Inches(target_w), height=Inches(target_h))
+    return slide
+
 
 def build_presentation():
     print(f"[*] Đang khởi tạo bản trình chiếu PowerPoint tại: {OUTPUT_PATH}", flush=True)
@@ -292,6 +314,9 @@ def build_presentation():
              "• Lợi ích Vượt trội:\n  Triệt tiêu 100% thao tác đọc Heap Pages trên đĩa, tăng tốc độ truy vấn từ 40% đến 60%!"
     p.font.size = Pt(12.5)
 
+    add_image_slide(prs, "6B. Bản chất Vật lý: B+Tree Index Scan vs. Covering Index-Only Scan", "CẤU TRÚC VẬT LÝ VÀ BỘ NHỚ", "fig8_index_scan_vs_index_only.png")
+
+
     # =========================================================================
     # SLIDE 8: CÁC THUẬT TOÁN KẾT NỐI ĐA BẢNG (JOINS)
     # =========================================================================
@@ -346,6 +371,9 @@ def build_presentation():
              "• Hiệu quả Thực tế:\n  Tiết kiệm hơn 54.000 dòng quét đĩa, giảm 89,9% thời gian truy vấn (từ 71,58 ms xuống 7,26 ms, nhanh gần 10 lần)!"
     p.font.size = Pt(12.5)
 
+    add_image_slide(prs, "8B. Chuỗi Thời gian Đơn hàng Thực tế & Chiến lược Phân vùng Bảng", "PHÂN VÙNG DỮ LIỆU THỰC TẾ", "fig3_orders_time_series_partitioning.png")
+
+
     # =========================================================================
     # SLIDE 10: QUẢN TRỊ GIAO DỊCH, ACID, MVCC & WAL
     # =========================================================================
@@ -388,6 +416,8 @@ def build_presentation():
              "chứa đầy đủ các quan hệ 1-N, N-N phức tạp, hoàn hảo cho bài toán tối ưu hóa CSDL nâng cao."
     p.font.size = Pt(12)
 
+    add_image_slide(prs, "10B. Sơ đồ Quan hệ Thực thể ERD (8 Bảng Chuẩn 3NF, 100k Đơn hàng)", "LƯỢC ĐỒ CƠ SỞ DỮ LIỆU THỰC TẾ", "fig1_database_erd.png")
+
     # =========================================================================
     # SLIDE 12: THIẾT KẾ TẬP TRUY VẤN ĐỐI CHUẨN Q1 - Q5
     # =========================================================================
@@ -408,6 +438,8 @@ def build_presentation():
              "• Truy vấn Q5: Quét Khoảng Thời gian Đơn hàng (Time-Window Range Scan)\n" \
              "  Quét dữ liệu quý 3 năm 2017 để đo kiểm và đối chứng cơ chế Cắt tỉa phân vùng (Partition Pruning)."
     p.font.size = Pt(12)
+
+    add_image_slide(prs, "11B. Dữ liệu Thực tế: Phương thức Thanh toán & Kỳ hạn Trả góp (Q4)", "PHÂN TÍCH NGHIỆP VỤ THỰC TẾ", "fig5_payment_distribution.png")
 
     # =========================================================================
     # SLIDE 13: QUY TRÌNH TINH CHỈNH VẬT LÝ 4 GIAI ĐOẠN
@@ -498,6 +530,9 @@ def build_presentation():
                         run.font.bold = True
                         run.font.color.rgb = COLOR_CYAN
 
+    add_image_slide(prs, "13B. Biểu đồ Đối sánh Thời gian Thực thi (Latency) Q1 - Q4", "KẾT QUẢ THỰC NGHIỆM ĐỊNH LƯỢNG", "fig6_query_latency_comparison.png")
+
+
     # =========================================================================
     # SLIDE 15: PHÂN TÍCH SÂU Q2: SỰ BỨT PHÁ CỦA COVERING INDEX
     # =========================================================================
@@ -519,6 +554,9 @@ def build_presentation():
              "• Kế hoạch Thực thi Tối ưu:\n  SEARCH o USING INDEX idx_orders_ts | SEARCH oi USING INDEX idx_items_covering (order_id=?)\n\n" \
              "• Kết quả:\n  Triệt tiêu 100% việc đọc trang bảng order_items, thời gian giảm xuống 1.179,07 ms (Nhanh gấp 2,1 lần)!"
     p.font.size = Pt(12.5)
+
+    add_image_slide(prs, "14B. Kết quả Nghiệp vụ Q2: Top 10 Ngành hàng Doanh thu Cao nhất 2017", "KẾT QUẢ THỰC NGHIỆM ĐỊNH LƯỢNG", "fig4_top_categories_revenue.png")
+
 
     # =========================================================================
     # SLIDE 16: PHÂN TÍCH SÂU Q1 & Q3: NGHỊCH LÝ CHỈ MỤC ĐỘ CHỌN LỌC THẤP
@@ -543,6 +581,9 @@ def build_presentation():
              "• Giải pháp Khắc phục:\n  Chuyển sang Composite Index hoặc Partial Index, phục hồi lại thời gian tối ưu."
     p.font.size = Pt(12.5)
 
+    add_image_slide(prs, "15B. Minh chứng Dữ liệu: Phân bố Trạng thái Đơn hàng (97,02% Delivered)", "NGHỊCH LÝ CHỈ MỤC & ĐỘ CHỌN LỌC", "fig2_order_status_distribution.png")
+
+
     # =========================================================================
     # SLIDE 17: PHÂN TÍCH SÂU Q5: TĂNG TỐC 10 LẦN NHỜ PARTITION PRUNING
     # =========================================================================
@@ -562,6 +603,9 @@ def build_presentation():
     p.text = "• Cơ chế Cắt tỉa Phân vùng (Partition Pruning):\n  Bộ tối ưu hóa đối chiếu ràng buộc kiểm tra của các phân vùng:\n  - Bỏ qua phân vùng orders_2016 (329 dòng)\n  - Bỏ qua phân vùng orders_2018 (54.011 dòng)\n\n" \
              "• Kết quả:\n  Chỉ quét duy nhất phân vùng orders_2017. Thời gian giảm thẳng từ 71,58 ms xuống 7,26 ms, tăng tốc gần 10 lần!"
     p.font.size = Pt(12.5)
+
+    add_image_slide(prs, "16B. Minh chứng Thực nghiệm Q5: Cắt tỉa Phân vùng Tăng tốc Gần 10 Lần", "KẾT QUẢ THỰC NGHIỆM ĐỊNH LƯỢNG", "fig7_partition_pruning_performance.png")
+
 
     # =========================================================================
     # SLIDE 18: BỘ CHỈ DẪN THIẾT KẾ VẬT LÝ DÀNH CHO KỸ SƯ CSDL (DBA GUIDELINES)
@@ -640,9 +684,18 @@ def build_presentation():
     p.font.color.rgb = COLOR_GOLD
     p.alignment = PP_ALIGN.CENTER
 
-    prs.save(OUTPUT_PATH)
-    file_size_kb = os.path.getsize(OUTPUT_PATH) / 1024
-    print(f"[+] Đã tạo thành công bản trình chiếu PowerPoint ({file_size_kb:.2f} KB) tại:\n    {OUTPUT_PATH}", flush=True)
+    saved_path = OUTPUT_PATH
+    try:
+        prs.save(OUTPUT_PATH)
+    except PermissionError:
+        saved_path = os.path.join(OUTPUT_DIR, "SLIDE_THUYET_TRINH_CSDL_NANG_CAO_CHITIET.pptx")
+        prs.save(saved_path)
+        print(f"[!] Lưu ý: Tệp {OUTPUT_PATH} đang được mở trong ứng dụng khác (WPS/PowerPoint).")
+        print(f"[*] Đã lưu bản slide chi tiết có hình ảnh tại: {saved_path}")
+
+    file_size_kb = os.path.getsize(saved_path) / 1024
+    print(f"[+] Đã tạo thành công bản trình chiếu PowerPoint ({file_size_kb:.2f} KB) tại:\n    {saved_path}", flush=True)
+
 
 if __name__ == "__main__":
     build_presentation()

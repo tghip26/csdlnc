@@ -20,8 +20,18 @@
 ```
 d:\CaNhan\csdltt\
 ├── docs/                                      # Tài liệu học thuật, báo cáo và bản thuyết trình
-│   ├── BAO_CAO_CSDL_NANG_CAO.docx             # Báo cáo chuyên sâu môn học định dạng Microsoft Word (.docx, 8 chương)
-│   ├── SLIDE_THUYET_TRINH_CSDL_NANG_CAO.pptx  # Bộ slide thuyết trình bảo vệ đề tài PowerPoint (.pptx, 20 slide chuẩn 16:9)
+│   ├── BAO_CAO_CSDL_NANG_CAO.docx             # Báo cáo chuyên sâu môn học Word (.docx, 8 chương, nhúng 8 hình minh họa)
+│   ├── SLIDE_THUYET_TRINH_CSDL_NANG_CAO_CHITIET.pptx # Bộ slide PowerPoint bảo vệ đề tài (28 slide 16:9, tích hợp hình ảnh thực tế)
+│   ├── SLIDE_THUYET_TRINH_CSDL_NANG_CAO.pptx  # Bộ slide thuyết trình PowerPoint chuẩn bảo vệ
+│   ├── images/                                # Thư mục 8 biểu đồ và sơ đồ phân tích thực nghiệm chất lượng cao (300 DPI)
+│   │   ├── fig1_database_erd.png              # Sơ đồ Thực thể Quan hệ ERD 8 bảng 3NF
+│   │   ├── fig2_order_status_distribution.png # Phân bố trạng thái đơn hàng & Hiện tượng Nghịch lý Độ chọn lọc thấp
+│   │   ├── fig3_orders_time_series_partitioning.png # Chuỗi thời gian 2016-2018 & Ranh giới phân vùng
+│   │   ├── fig4_top_categories_revenue.png    # Top 10 ngành hàng doanh thu cao nhất năm 2017 (Q2)
+│   │   ├── fig5_payment_distribution.png      # Cơ cấu phương thức thanh toán & số kỳ trả góp (Q4)
+│   │   ├── fig6_query_latency_comparison.png  # Đối sánh thời gian thực thi Q1-Q4 qua các giai đoạn
+│   │   ├── fig7_partition_pruning_performance.png # Minh chứng Cắt tỉa Phân vùng tăng tốc gần 10 lần (Q5)
+│   │   └── fig8_index_scan_vs_index_only.png  # So sánh cơ chế vật lý: Index Scan vs. Covering Index-Only Scan
 │   ├── BAI_BAO_KHOA_HOC_HOAN_CHINH.md         # Bản thảo toàn văn Bài báo khoa học chuẩn IMRAD (IEEE format)
 │   ├── PAPER_MANUSCRIPT_IEEE.tex              # Mã nguồn LaTeX IEEE Transactions hoàn chỉnh sẵn sàng biên dịch
 │   ├── BAO_CAO_MON_HOC_CSDL_NANG_CAO.md       # Báo cáo tổng kết chuyên sâu môn học CSDL Nâng cao (Markdown)
@@ -41,9 +51,10 @@ d:\CaNhan\csdltt\
 │   ├── index_tuner.py                         # Bộ công cụ tinh chỉnh chỉ mục (Single, Composite, Partial, Covering)
 │   ├── partitioning_engine.py                 # Động cơ phân vùng bảng theo thời gian và Partition Pruning
 │   └── benchmark_runner.py                    # Script tự động chạy đo kiểm và xuất báo cáo so sánh
-├── scripts/                                   # Bộ công cụ sinh báo cáo và trình chiếu tự động
-│   ├── generate_word_report.py                # Script sinh tài liệu Word .docx chuẩn học thuật Thạc sĩ
-│   └── generate_powerpoint_presentation.py    # Script sinh slide PowerPoint .pptx 20 trang hiện đại
+├── scripts/                                   # Bộ công cụ sinh báo cáo, đồ thị và trình chiếu tự động
+│   ├── generate_charts.py                     # Script trích xuất CSDL thực tế và sinh 8 hình ảnh 300 DPI
+│   ├── generate_word_report.py                # Script sinh tài liệu Word .docx kèm hình ảnh và bảng chuẩn học thuật
+│   └── generate_powerpoint_presentation.py    # Script sinh slide PowerPoint .pptx 28 trang tích hợp đầy đủ hình ảnh
 └── README.md                                  # Hướng dẫn tổng quan dự án
 ```
 
@@ -93,11 +104,14 @@ python src/benchmark_runner.py
 
 ## 📚 TÀI LIỆU THAM KHẢO VÀ CÔNG BỐ HỌC THUẬT
 Toàn bộ 45 tài liệu tham khảo khoa học đỉnh cao (ACM SIGMOD, VLDB, IEEE ICDE, ACM TODS) đã được tổng hợp, phân tích chi tiết tại:
-* [Báo cáo Tổng kết Chi tiết dạng Microsoft Word (8 chương)](file:///d:/CaNhan/csdltt/docs/BAO_CAO_CSDL_NANG_CAO.docx)
-* [Slide Thuyết trình Bảo vệ Đề tài Microsoft PowerPoint (20 slide 16:9)](file:///d:/CaNhan/csdltt/docs/SLIDE_THUYET_TRINH_CSDL_NANG_CAO.pptx)
+* [Báo cáo Tổng kết Chi tiết dạng Microsoft Word (8 chương, nhúng 8 hình minh họa thực tế)](file:///d:/CaNhan/csdltt/docs/BAO_CAO_CSDL_NANG_CAO.docx)
+* [Slide Thuyết trình Bảo vệ Đề tài PowerPoint Chi tiết (28 slide 16:9, tích hợp hình ảnh thực tế)](file:///d:/CaNhan/csdltt/docs/SLIDE_THUYET_TRINH_CSDL_NANG_CAO_CHITIET.pptx)
+* [Slide Thuyết trình Bảo vệ Đề tài Microsoft PowerPoint (Bản tóm tắt)](file:///d:/CaNhan/csdltt/docs/SLIDE_THUYET_TRINH_CSDL_NANG_CAO.pptx)
+* [Thư mục 8 Hình ảnh & Biểu đồ Thực nghiệm 300 DPI](file:///d:/CaNhan/csdltt/docs/images)
 * [Bản thảo bài báo khoa học chuẩn IMRAD (IEEE format)](file:///d:/CaNhan/csdltt/docs/BAI_BAO_KHOA_HOC_HOAN_CHINH.md)
 * [Mã nguồn LaTeX IEEE Transactions hoàn chỉnh](file:///d:/CaNhan/csdltt/docs/PAPER_MANUSCRIPT_IEEE.tex)
 * [Báo cáo môn học CSDL Nâng cao (Markdown)](file:///d:/CaNhan/csdltt/docs/BAO_CAO_MON_HOC_CSDL_NANG_CAO.md)
 * [Bảng phân tích chuyên sâu 45 tài liệu khoa học](file:///d:/CaNhan/csdltt/references/45_REFERENCES_ANALYSIS.md)
 * [Tệp trích dẫn BibTeX chuẩn quốc tế](file:///d:/CaNhan/csdltt/references/references.bib)
+
 
